@@ -1,0 +1,119 @@
+  <!-- CONTACT / FOOTER -->
+  <section id="contact" class="contact-blank" aria-label="Contact & Footer">
+    <div class="contact-blank__inner footer-layout">
+      <div class="contact-content">
+        <p class="contact-content__eyebrow">CONTACT · DUIL KANG</p>
+        <h2>함께 풀 문제를<br>이야기해요.</h2>
+        <p class="contact-content__description">사용자 문제를 서비스 흐름으로 정리하고, 구현까지 연결하는 일을 함께하고 싶습니다.</p>
+        <div class="contact-actions">
+          <a class="contact-actions__email" href="mailto:hjks0505@naver.com?subject=%EA%B0%95%EB%91%90%EC%9D%BC%20%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4%20%EB%AC%B8%EC%9D%98">이메일 보내기 <span aria-hidden="true">↗</span></a>
+          <a class="contact-actions__resume" href="resume.html">이력서 보기 <span aria-hidden="true">↗</span></a>
+        </div>
+        <a class="contact-content__address" href="mailto:hjks0505@naver.com">hjks0505@naver.com</a>
+      </div>
+      <div class="footer-left">
+        <div class="logo" aria-label="Beyond">
+          <span class="logo-pre">B</span><span class="logo-m">e</span><span class="logo-post">yond every</span>
+        </div>
+        <div class="tag">boundary</div>
+      </div>
+
+      <div class="footer-venn" aria-hidden="true">
+        <svg class="hero-venn" viewBox="0 0 1200 900" role="img" aria-label="Technology & Humanity">
+          <defs>
+            <radialGradient id="contact-gBlue" cx="70%" cy="35%" r="50%">
+              <stop offset="0%" stop-color="#f8fbff" />
+              <stop offset="20%" stop-color="#cae6ff" />
+              <stop offset="40%" stop-color="#55b2ff" />
+              <stop offset="70%" stop-color="#0b5bd6" />
+              <stop offset="100%" stop-color="#062a7a" />
+            </radialGradient>
+
+            <radialGradient id="contact-gTechHalo" cx="30%" cy="55%" r="65%">
+              <stop offset="0%" stop-color="rgba(255,255,255,.18)" />
+              <stop offset="60%" stop-color="rgba(255,255,255,.06)" />
+              <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+            </radialGradient>
+
+            <filter id="contact-soft" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="20" />
+            </filter>
+
+            <filter id="contact-dotGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="0.7" result="g" />
+              <feMerge>
+                <feMergeNode in="g" />
+                <feMergeNode in="SourceGraphic" />
+              </feMerge>
+            </filter>
+
+            <mask id="contact-curveMask" maskUnits="userSpaceOnUse">
+              <rect x="0" y="0" width="1200" height="900" fill="white" />
+              <circle cx="625" cy="420" r="240" fill="black" />
+              <circle cx="550" cy="600" r="240" fill="black" />
+            </mask>
+
+            <linearGradient id="contact-gDiagBlue" x1="0%" y1="0%" x2="100%" y2="0%" gradientTransform="rotate(135 .5 .5)">
+              <stop offset="0%" stop-color="#BEEDEF" />
+              <stop offset="55%" stop-color="#68C3C4" />
+              <stop offset="100%" stop-color="#124C4D" />
+              <animateTransform attributeName="gradientTransform" type="rotate" values="135 .5 .5; 495 .5 .5" dur="20s"
+                repeatCount="indefinite" />
+            </linearGradient>
+
+            <radialGradient id="contact-gFlow" cx="35%" cy="30%" r="55%" fx="30%" fy="28%">
+              <stop offset="0%" stop-color="rgba(255,255,255,.18)" />
+              <stop offset="35%" stop-color="rgba(255,255,255,.08)" />
+              <stop offset="100%" stop-color="rgba(255,255,255,0)" />
+              <animate attributeName="fx" values="30%;70%;30%" dur="22s" repeatCount="indefinite" />
+              <animate attributeName="fy" values="28%;62%;28%" dur="26s" repeatCount="indefinite" />
+            </radialGradient>
+
+            <radialGradient id="contact-gBlueVignette" cx="50%" cy="55%" r="62%">
+              <stop offset="70%" stop-color="rgba(0,0,0,0)" />
+              <stop offset="100%" stop-color="rgba(0,0,0,.25)" />
+            </radialGradient>
+          </defs>
+
+          <g transform="translate(400,330)">
+            <circle r="200" fill="url(#contact-gTechHalo)" />
+            <circle r="220" fill="none" stroke="#111" stroke-width="2" stroke-dasharray="3 7" opacity="0.85" />
+            <text class="venn-label" x="0" y="0" fill="#000">Usability</text>
+          </g>
+
+          <g transform="translate(770,590)">
+            <circle r="230" fill="url(#contact-gDiagBlue)" filter="url(#contact-soft)" />
+            <circle r="230" fill="url(#contact-gFlow)" opacity=".25" />
+            <text class="venn-label" x="0" y="0" fill="#ffffff">Delight</text>
+          </g>
+
+          <ellipse cx="580" cy="500" rx="430" ry="240" transform="translate(1200,0) scale(-1,1) rotate(39.58 650 500)"
+            fill="none" stroke="#777" stroke-width="2" stroke-linecap="round" mask="url(#contact-curveMask)" />
+
+          <g transform="translate(1200,0) scale(-1,1) rotate(39.58 650 500)">
+            <path id="contact-orbitPath" d="M 1010 500 A 430 240 0 1 1 150 500 A 430 240 0 1 1 1010 500" fill="none"
+              stroke="none" />
+
+            <g mask="url(#contact-curveMask)">
+              <circle r="6" fill="#111" filter="url(#contact-dotGlow)">
+                <animateMotion dur="14s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#contact-orbitPath" />
+                </animateMotion>
+              </circle>
+            </g>
+
+            <g mask="url(#contact-curveMask)">
+              <circle r="6" fill="#111" filter="url(#contact-dotGlow)">
+                <animateMotion dur="14s" begin="-7s" repeatCount="indefinite" rotate="auto">
+                  <mpath href="#contact-orbitPath" />
+                </animateMotion>
+              </circle>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <p class="copyright">© 2026 21's Portfolio. All Right reserved.</p>
+  </section>
+

@@ -1,0 +1,9 @@
+.DS_Store
+previews/
+
+# Original assets retained locally; the site uses the WebP images and preview videos.
+img/work*.png
+img/archive_*.png
+video/*.mp4
+video/*.mov
+!video/between_universe.mp4

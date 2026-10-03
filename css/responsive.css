@@ -1,0 +1,261 @@
+/* 키보드와 터치에서도 첫 화면 및 Archive 탐색이 보이도록 한다. */
+.ui .nav a:focus-visible,
+.ui-about .nav a:focus-visible,
+.ui .brand:focus-visible,
+.thumb-item:focus-visible {
+  outline: 3px solid #176c70 !important;
+  outline-offset: 4px;
+}
+
+body:not(.ui-light) .ui .nav a:focus-visible,
+body:not(.ui-light) .ui .brand:focus-visible,
+body.overlay-on .thumb-item:focus-visible {
+  outline-color: #fff !important;
+}
+
+.strength-card:focus-visible {
+  outline: 3px solid #176c70;
+  outline-offset: 5px;
+}
+
+.strength-card.is-active .media .overlay,
+.strength-card:focus-visible .media .overlay {
+  opacity: 1;
+  transform: none;
+}
+
+.strengths-grid:has(.strength-card.is-active) .strength-card:not(.is-active) .media::after {
+  background: rgba(0, 0, 0, .7);
+}
+
+.strengths-grid:has(.strength-card.is-active) .strength-note .note-panels .note-default {
+  display: none;
+}
+
+.strengths-grid:has(.strength-card[data-key="1"].is-active) .note-panel[data-key="1"],
+.strengths-grid:has(.strength-card[data-key="2"].is-active) .note-panel[data-key="2"],
+.strengths-grid:has(.strength-card[data-key="3"].is-active) .note-panel[data-key="3"],
+.strengths-grid:has(.strength-card[data-key="4"].is-active) .note-panel[data-key="4"] {
+  display: block;
+}
+
+.section-peek__close {
+  align-self: flex-end;
+  margin: 0 0 16px;
+  padding: 8px 12px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: transparent;
+  color: #111;
+  cursor: pointer;
+  font: 600 13px/1 'Pretendard', sans-serif;
+}
+
+@media (max-width: 1080px) {
+  #work .work-sticky,
+  #work .work-section { overflow: visible; }
+
+  .work-hero__bg { transform: none; }
+
+  .about-stage .b4 { right: 0; }
+
+  #work .work-section:has(.section-peek.is-open) { z-index: 100; }
+
+  #work .section-peek__tab { display: none; }
+
+  #work .section-peek__panel {
+    position: fixed;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    width: min(100vw, 580px);
+    height: min(86svh, 760px);
+    border-radius: 14px 0 0 0;
+  }
+
+  body > .section-peek__panel {
+    position: fixed;
+    top: auto;
+    right: 0;
+    bottom: 0;
+    left: auto;
+    margin: 0;
+    width: min(100vw, 580px);
+    height: min(86svh, 760px);
+    border-radius: 14px 0 0 0;
+  }
+
+  body > .section-peek__panel.is-open {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  .ui .brand,
+  .ui-about .brand {
+    left: 20px;
+    top: 15px;
+    transform: scale(.75);
+    transform-origin: top left;
+  }
+
+  .ui .nav,
+  .ui-about .nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: 69px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    margin: 0;
+  }
+
+  .ui .profile,
+  .ui-about .profile { display: none; }
+
+  #work .work-section {
+    min-height: 100svh;
+    padding: 140px 28px 80px;
+    gap: 28px;
+  }
+}
+
+@media (hover: none) {
+  .work-hero::after {
+    content: "▶ 영상 미리보기";
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    z-index: 4;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(0, 0, 0, .78);
+    color: #fff;
+    font: 600 12px/1.2 'Pretendard', sans-serif;
+    pointer-events: none;
+  }
+
+  .work-hero.is-open::after {
+    content: "닫기 ×";
+  }
+}
+
+@media (max-width: 700px) {
+  .wrap { padding: 0; }
+
+  .ui .brand,
+  .ui-about .brand {
+    left: 20px;
+    top: 15px;
+    transform: scale(.75);
+    transform-origin: top left;
+  }
+
+  .ui .nav,
+  .ui-about .nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    top: 69px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    margin: 0;
+  }
+
+  .ui .nav a,
+  .ui-about .nav a {
+    gap: 4px;
+    padding: 8px 4px;
+  }
+
+  .ui .nav .idx,
+  .ui .nav .lbl,
+  .ui-about .nav .idx,
+  .ui-about .nav .lbl {
+    font-size: 11px;
+  }
+
+  .ui .profile,
+  .ui-about .profile { display: none; }
+
+  .scroll-hint {
+    left: 20px;
+    bottom: 132px;
+    font-size: 12px;
+  }
+
+  .scroll-word { display: none; }
+
+  .thumbs {
+    left: 20px;
+    right: 20px;
+    bottom: 16px;
+    gap: 8px;
+    overflow-x: auto;
+    max-width: calc(100vw - 40px);
+    padding-bottom: 2px;
+  }
+
+  .thumb-item { flex: 0 0 auto; }
+  .thumb { width: 77px; height: 73px; }
+  .thumb-cap { font-size: 11px; }
+
+  .about-stage__photo { width: min(320px, 80vw); }
+  .about-stage .glass-badge {
+    position: static;
+    max-width: 100%;
+    margin: 5px auto;
+    white-space: normal;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  #work .work-section {
+    min-height: 100svh;
+    padding: 114px 20px 48px;
+    gap: 24px;
+  }
+
+  .work-hero { width: 100%; }
+  .work-info { padding: 0; width: 100%; gap: 10px; }
+  .work-heading { width: auto; max-width: 100%; }
+  .work-summary { font-size: 15px; }
+  .work-proof { font-size: 13px; text-align: left; }
+
+  .contact-content { margin-top: 100px; }
+}
+
+@media (max-width: 480px) {
+  .about-stage { width: 100%; max-width: 100%; }
+
+  .skills {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    margin: 48px 0 0;
+    justify-content: flex-start;
+    overflow-x: auto;
+  }
+}
+
+/* 첫 화면 오버레이와 포털의 클릭 영역. JS가 추가하던 중복 스타일을 한곳에 둔다. */
+.work-overlay { position: fixed; inset: 0; z-index: 12; pointer-events: none; }
+.thumbs { position: absolute; z-index: 60; }
+.thumb-item:hover .thumb-cap { color: #fff; }
+.thumb-item:hover .thumb { border-color: #fff; box-shadow: 0 2px 10px rgba(0, 0, 0, .2); }
+body.overlay-on .thumbs .thumb-cap { color: #fff !important; }
+body.overlay-on .thumbs .thumb { border-color: rgba(255, 255, 255, .35); }
+body.overlay-on .thumbs .thumb-item.is-hover .thumb { border-color: #fff; }
+.work-titles { z-index: 61; }
+
+#ui-portal .ui .brand,
+#ui-portal .ui .nav,
+#ui-portal .ui .nav a,
+#ui-portal .ui .profile,
+#ui-portal .ui .scroll-hint,
+#ui-portal .ui .scroll-word,
+#ui-portal .ui .thumbs,
+#ui-portal .ui .thumbs * { pointer-events: auto; }

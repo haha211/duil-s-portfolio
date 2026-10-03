@@ -1,0 +1,55 @@
+@font-face {
+  font-family: Pretendard;
+  src: url('../font/Pretendard/PretendardVariable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: #fdfdfd;
+  color: #111;
+  font-family: Pretendard, sans-serif;
+  line-height: 1.55;
+}
+a { color: inherit; }
+a:focus-visible { outline: 2px solid #176c70; outline-offset: 5px; }
+.resume-page { width: min(860px, calc(100% - 48px)); margin: 0 auto; padding: 36px 0 80px; }
+.resume-header { padding: 0 0 56px; border-bottom: 2px solid #111; }
+.back-link { display: inline-block; margin-bottom: 84px; color: #176c70; text-decoration: none; font-size: 14px; font-weight: 700; }
+.back-link:hover, .email-link:hover, footer a:hover { text-decoration: underline; }
+.eyebrow { margin: 0 0 16px; color: #176c70; font-size: 12px; font-weight: 800; letter-spacing: .12em; }
+h1 { margin: 0; font-size: clamp(42px, 7vw, 76px); line-height: 1.1; letter-spacing: -.06em; }
+h1 span { display: block; margin-top: 12px; font-size: clamp(14px, 1.5vw, 18px); font-weight: 500; letter-spacing: .04em; }
+.intro { max-width: 680px; margin: 28px 0 18px; font-size: clamp(17px, 2vw, 21px); line-height: 1.55; word-break: keep-all; }
+.email-link { color: #176c70; font-weight: 700; text-decoration: none; }
+.resume-section { padding: 42px 0 36px; border-bottom: 1px solid #d3d7d7; }
+.resume-section h2 { margin: 0 0 20px; color: #176c70; font-size: 18px; letter-spacing: -.02em; }
+.entry { display: flex; justify-content: space-between; gap: 28px; padding: 18px 0; border-top: 1px solid #e5e7e7; }
+.entry h3 { margin: 0; font-size: 18px; line-height: 1.35; }
+.entry p { max-width: 570px; margin: 8px 0 0; color: #454b4b; font-size: 15px; word-break: keep-all; }
+.entry time { flex: 0 0 auto; color: #636b6b; font-size: 14px; }
+.plain-list { margin: 0; padding: 0; list-style: none; }
+.plain-list li { padding: 11px 0; border-top: 1px solid #e5e7e7; }
+.award-proof { display: inline-block; margin-top: 20px; color: #176c70; font-weight: 700; text-underline-offset: 4px; }
+.resume-section > p { margin: 0; color: #454b4b; }
+footer { margin-top: 42px; }
+footer a { color: #176c70; font-weight: 700; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .resume-page { width: min(100% - 36px, 860px); padding-top: 24px; }
+  .back-link { margin-bottom: 64px; }
+  .entry { display: block; }
+  .entry time { display: block; margin-top: 8px; }
+}
+
+@media print {
+  body { background: #fff; }
+  .resume-page { width: 100%; padding: 0; }
+  .back-link, footer { display: none; }
+  .resume-header { padding-bottom: 28px; }
+  .resume-section { padding: 24px 0 18px; break-inside: avoid; }
+}
