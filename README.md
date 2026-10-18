@@ -4,6 +4,9 @@
 
 ## 이번 버전의 범위
 
+- 앤드와이즈 웹 기획 경력과 개인용 AI Agent 사례 추가, 웹사이트 이미지 3개·Agent 이미지 1개 자리 확보
+- 요구사항 정의·IA 작성·화면설계서 초안·Figma 화면설계서 작성 자동화 범위를 소개와 이력서에 반영
+- 최근 경력 영역의 카드 대비·본문 크기·행간과 모바일 배치 개선
 - 대표 프로젝트 4개의 첫 화면에 과제, 기획·구현 기여, 확인 자료를 노출
 - About Awards·LG DX 프로젝트·이력서에 수상 증빙 Figma 링크 연결
 - 긴 프로젝트 소개를 문제·역할·산출물 중심으로 정리
@@ -26,9 +29,9 @@
 
 ## 파일 구조와 수정 방법
 
-- `src/sections/`: Intro, About, Work, Archive, Contact의 HTML 원본
+- `src/sections/`: Intro, About, Andwise, Work, Archive, Contact의 HTML 원본
 - `src/site/`: 문서 시작과 스크립트 태그
-- `css/`: base → intro → about → work → archive → contact → responsive 순서로 로드
+- `css/`: base → intro → about → work → archive → contact → responsive → planning 순서로 로드
 - `js/site.js`, `js/interactions.js`, `js/hero-about.js`, `js/work.js`: 스크롤·탐색, 상호작용, 첫 화면 전환, 프로젝트 동작
 - `index.html`: 위 HTML 조각에서 생성하는 정적 배포 파일. 내용 수정은 `src/`에서 합니다.
 - `.vscode/settings.json`: Live Server 포트 설정

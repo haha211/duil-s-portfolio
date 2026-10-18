@@ -9,6 +9,7 @@ PARTS = (
     "src/site/head.html",
     "src/sections/intro.html",
     "src/sections/about.html",
+    "src/sections/andwise.html",
     "src/sections/work.html",
     "src/sections/archive.html",
     "src/sections/contact.html",
