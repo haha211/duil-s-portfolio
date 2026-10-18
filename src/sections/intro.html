@@ -11,6 +11,14 @@
 
       <div class="wrap" id="hero">
         <div class="work-overlay" id="workOverlay" aria-hidden="true">
+          <div class="work-layer work-layer--agent" data-work="agent">
+            <div class="hero-agent-card">
+              <p class="hero-agent-card__label">01 / PERSONAL AI AGENT</p>
+              <p class="hero-agent-card__title">Web planning,<br><span>automated.</span></p>
+              <p class="hero-agent-card__summary">요구사항에서 Figma 화면설계서까지.</p>
+              <ol><li><span>01</span>요구사항 정의</li><li><span>02</span>IA 작성</li><li><span>03</span>화면설계서 초안</li><li><span>04</span>Figma 작성 자동화</li></ol>
+            </div>
+          </div>
           <div class="work-layer" data-work="1">
             <img src="img/work01.webp" alt="" class="work-bg" loading="lazy" decoding="async">
             <img src="img/work01.webp" alt="" class="work-fg" loading="lazy" decoding="async">
@@ -128,7 +136,7 @@
           <p class="hero-message__eyebrow">SERVICE PLANNER · DEVELOPMENT FLUENT</p>
           <h1>개발을 이해하고<br>구현까지 연결하는<br><strong>서비스 기획자 강두일</strong>입니다.</h1>
           <p class="hero-message__summary">대학·공공기관 웹사이트를 설계하고, 개인용 AI Agent로 요구사항·IA·화면설계서 작성을 자동화합니다.</p>
-          <a class="hero-message__link" href="#andwise">최근 기획 업무 확인하기 <span aria-hidden="true">↗</span></a>
+          <a class="hero-message__link" href="#work">AI Agent 제작 사례 보기 <span aria-hidden="true">↗</span></a>
         </div>
 
         <div class="ui" aria-label="overlay text">
@@ -141,7 +149,7 @@
 
           <nav class="nav" aria-label="primary">
             <a href="#about"><span class="idx">01</span><span class="lbl">INFO</span></a>
-            <a href="#andwise"><span class="idx">02</span><span class="lbl">WORK</span></a>
+            <a href="#work"><span class="idx">02</span><span class="lbl">WORK</span></a>
             <a href="#archive"><span class="idx">03</span><span class="lbl">ARCHIVE</span></a>
             <a href="#contact"><span class="idx">04</span><span class="lbl">CONTACT</span></a>
           </nav>
@@ -159,26 +167,31 @@
           <button type="button" class="scroll-hint" data-target="#about">[ SCROLL TO EXPLORE ]</button>
           <div class="scroll-word">Is that impossible? Have you tried it right?</div>
 
-          <div class="thumbs">
-            <button type="button" class="thumb-item" data-work="1" aria-label="로지벌스 홈페이지 프로젝트로 이동">
+          <div class="thumbs" role="group" aria-label="대표 프로젝트 바로가기">
+            <button type="button" class="thumb-item" data-work="agent" data-target="planning-agent" aria-label="AI Agent 기획 자동화 프로젝트로 이동">
               <div class="thumb-cap">[ 01 ]</div>
-              <div class="thumb"></div>
+              <div class="thumb thumb--agent" aria-hidden="true"><span>AI<br>Agent.</span><i>↗</i></div>
             </button>
-            <button type="button" class="thumb-item" data-work="2" aria-label="비트원 유니버스 프로젝트로 이동">
+            <button type="button" class="thumb-item" data-work="1" data-target="logiverse-project" aria-label="로지벌스 홈페이지 프로젝트로 이동">
               <div class="thumb-cap">[ 02 ]</div>
               <div class="thumb"></div>
             </button>
-            <button type="button" class="thumb-item" data-work="3" aria-label="LG DX SCHOOL 프로젝트로 이동">
+            <button type="button" class="thumb-item" data-work="2" data-target="between-project" aria-label="비트윈 유니버스 프로젝트로 이동">
               <div class="thumb-cap">[ 03 ]</div>
               <div class="thumb"></div>
             </button>
-            <button type="button" class="thumb-item" data-work="4" aria-label="현대 소프티어 프로젝트로 이동">
+            <button type="button" class="thumb-item" data-work="3" data-target="lgdx-project" aria-label="LG DX SCHOOL 프로젝트로 이동">
               <div class="thumb-cap">[ 04 ]</div>
+              <div class="thumb"></div>
+            </button>
+            <button type="button" class="thumb-item" data-work="4" data-target="softeer-project" aria-label="현대 소프티어 프로젝트로 이동">
+              <div class="thumb-cap">[ 05 ]</div>
               <div class="thumb"></div>
             </button>
 
             <!-- 프로젝트 제목 오버레이 -->
             <div class="work-titles" aria-hidden="true">
+              <div class="work-title" data-work="agent"><span class="title">Personal AI Agent</span></div>
               <div class="work-title" data-work="1"><span class="title">Logiverse Website</span></div>
               <div class="work-title" data-work="2"><span class="title">BetWeen Universe UI/UX</span></div>
               <div class="work-title" data-work="3"><span class="title">LG DX SCHOOL</span></div>

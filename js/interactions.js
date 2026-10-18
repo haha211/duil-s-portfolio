@@ -160,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
     item.addEventListener('blur',  () => { item.classList.remove('is-hover'); hideWork(idx); });
   });
   if (thumbsWrap) { thumbsWrap.addEventListener('mouseleave', hideAll); }
+  document.addEventListener('portfolio:preview-close', hideAll);
 })();
 
 /* 고정 탐색 메뉴를 Hero 마스크 밖으로 이동 */
@@ -183,65 +184,28 @@ ui.style.height = '0';
 ui.style.overflow = 'visible';
   ui.__ported = true;
 })();
-/* 첫 화면 썸네일에서 프로젝트로 이동 */
+/* 첫 화면 썸네일에서 해당 프로젝트로 이동 */
 (function heroThumbsRouter(){
-  const work   = document.getElementById('work');
-  const thumbs = document.querySelectorAll('.thumbs .thumb-item[data-work]');
-  if (!work || !thumbs.length) return;
-
-  const lenis = window.__lenis;
-  const vh = () => window.innerHeight || 0;
-  const FIRST = 0.06;
-  const HIT   = 0.58;
-  const SHIFT = 1;
-  function desiredProgress(k){
-    return (k === 1) ? FIRST : ((k - 1 - SHIFT) + HIT);
-  }
-  function yForProgress(p){
-    const workTop = work.getBoundingClientRect().top + window.scrollY;
-    return workTop + p * vh();
-  }
-  function scrollToY(y, duration){
-    if (lenis && typeof lenis.scrollTo === 'function') {
-      lenis.scrollTo(y, { duration: duration ?? 0.9, easing: t => t, force: true, lock: true });
-    } else {
-      window.scrollTo({ top: y, behavior: 'smooth' });
-    }
-  }
-  function goTo(k){
-    if (window.matchMedia('(max-width: 1080px)').matches) {
-      const section = work.querySelector(`.work-section[data-layer="${k}"]`);
-      if (section) window.scrollTo({ top: section.getBoundingClientRect().top + window.scrollY, behavior: 'smooth' });
-      return;
-    }
-    const p  = desiredProgress(k);
-    const y0 = yForProgress(p);
-    scrollToY(y0, 0.8);
-    if (k !== 1) return;
-    let tries = 0;
-    const MAX  = 24;
-    const EPS  = 0.02;
-    const STEP = 0.08;
-    (function correct(){
-      const prog = window.__workProgress;
-      if (typeof prog !== 'number') { if (tries++ < MAX) requestAnimationFrame(correct); return; }
-      const delta = prog - p;
-      if (Math.abs(delta) <= EPS) return;
-      const next = prog - Math.sign(delta) * Math.min(Math.abs(delta), STEP);
-      scrollToY(yForProgress(next), 0.22);
-      if (tries++ < MAX) requestAnimationFrame(correct);
-    })();
-  }
-  thumbs.forEach((el) => {
-    el.style.cursor = 'pointer';
-    function act(e){
-      e.preventDefault();
-      e.stopPropagation();
-      const k = Number(e.currentTarget.dataset.work);
-      if (!k) return;
-      goTo(k);
-    }
-    el.addEventListener('click', act);
+  const work = document.getElementById('work');
+  if (!work) return;
+  document.querySelectorAll('.thumbs .thumb-item[data-work]').forEach(item => {
+    item.addEventListener('click', event => {
+      event.preventDefault();
+      event.stopPropagation();
+      const section = document.getElementById(item.dataset.target);
+      document.dispatchEvent(new CustomEvent('portfolio:preview-close'));
+      if (section && window.__scrollToWork) {
+        const source = document.activeElement;
+        window.__scrollToWork(section);
+        if (event.detail === 0) {
+          window.setTimeout(() => {
+            if (document.activeElement === source && !section.inert) {
+              section.querySelector('.work-btn')?.focus({ preventScroll: true });
+            }
+          }, 1100);
+        }
+      }
+    });
   });
 })();
 (function brandToAbsoluteTop(){

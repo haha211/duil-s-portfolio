@@ -1,6 +1,6 @@
 /* === WORK: Reverse Peel — 고정 레이어 === */
 #work.work-stack {
-  --count: 4;
+  --count: 5;
   position: relative;
   width: 100%;
   height: calc(var(--count) * 100vh);
@@ -19,11 +19,11 @@
 #work .work-section {
   position: absolute;
   inset: 0;
-  display: flex;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
   align-items: center;
-  justify-content: flex-start;
-  padding: clamp(40px, 6vw, 100px);
-  gap: 6%;
+  padding: clamp(80px, 10vh, 120px) clamp(56px, 7vw, 120px) clamp(80px, 10vh, 120px) clamp(180px, 13vw, 240px);
   color: #fff;
   background: #000;
   overflow: hidden;
@@ -32,20 +32,27 @@
   will-change: clip-path;
 }
 
-#work .work-section[data-layer="1"] {
-  z-index: 10;
+/* Keep media and copy together inside a bounded canvas, including ultrawide screens. */
+.work-layout {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(32px, 3.2vw, 56px);
+  width: 100%;
+  max-width: 1280px;
+  min-width: 0;
 }
 
-#work .work-section[data-layer="2"] {
-  z-index: 20;
-}
-
-#work .work-section[data-layer="3"] {
-  z-index: 30;
-}
-
-#work .work-section[data-layer="4"] {
-  z-index: 40;
+/* The blurred image keeps the project atmosphere while copy has a steady dark surface. */
+#work .work-section[data-project]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(90deg, #080b101a 30%, #080b10b3 73%, #080b10d9);
+  pointer-events: none;
 }
 
 #work .work-section::after {
@@ -73,8 +80,9 @@
 .work-hero {
   position: relative;
   z-index: 2;
-  width: min(56vw, 820px);
-  margin-left: 8%;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
   cursor: pointer;
 }
 
@@ -86,6 +94,8 @@
 .work-hero__fg {
   width: 100%;
   height: auto;
+  max-height: calc(100svh - 160px);
+  object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, .40);
   display: block;
@@ -124,17 +134,15 @@
 }
 
 .work-info {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: clamp(6vw, 9vw, 12vw);
-  width: min(40vw, 560px);
+  position: relative;
+  min-width: 0;
+  width: 100%;
   z-index: 4;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 12px;
-  padding-left: 10.5vh;
+  padding: 0;
 }
 
 .work-number {
@@ -146,7 +154,7 @@
 .work-heading {
   margin: 0;
   width: 310px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(22px, 2.6vw, 40px);
   line-height: 1.18;
@@ -155,7 +163,7 @@
 
 .work-summary {
   max-width: 34ch;
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(16px, 1.35vw, 19px);
   line-height: 1.55;
   color: #fff;
@@ -164,7 +172,7 @@
 .work-proof {
   display: grid;
   gap: 6px;
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(14px, 1.05vw, 16px);
   line-height: 1.45;
 }
@@ -185,7 +193,7 @@
 
 .work-evidence {
   align-self: flex-start;
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(14px, 1.05vw, 16px);
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -261,6 +269,10 @@
 }
 
 @media (max-width: 1080px) {
+  #work .work-section[data-project]::before {
+    background: linear-gradient(180deg, #080b1033 10%, #080b10b3 55%, #080b10eb);
+  }
+
   #work.work-stack {
     height: auto;
   }
@@ -273,10 +285,19 @@
   #work .work-section {
     position: relative;
     clip-path: none;
+    display: flex;
     flex-direction: column;
     text-align: center;
     padding-bottom: 100px;
   }
+
+  .work-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .work-hero__fg { max-height: none; }
 
   .work-hero {
     width: min(92vw, 720px);
@@ -300,6 +321,21 @@
 
   .work-btn {
     align-self: center;
+  }
+}
+
+/* Short desktop windows need document scrolling rather than clipped fixed stages. */
+@media (min-width: 1081px) and (max-height: 759px) {
+  #work.work-stack { height: auto; }
+  #work .work-sticky { position: static; height: auto; overflow: visible; }
+  #work .work-section {
+    position: relative;
+    inset: auto;
+    min-height: 100svh;
+    padding-block: 120px 64px;
+    overflow: visible;
+    clip-path: none;
+    will-change: auto;
   }
 }
 
@@ -362,10 +398,10 @@
 .section-peek__panel {
   pointer-events: auto;
   position: absolute;
-  top: -303px;
+  top: calc(5svh - min(40.5svh, 480px));
   right: 0px;
   width: clamp(470px, 38vw, 650px);
-  height: 81vh;
+  height: min(81svh, 960px);
   transform: translateX(100%);
   opacity: 0;
   transition: transform .45s cubic-bezier(.2, .65, .2, 1), opacity .3s ease;
@@ -390,7 +426,7 @@
   font-weight: 700;
   letter-spacing: .01em;
   margin: 0 0 8px;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
 }
 
 .section-peek__meta {
@@ -402,7 +438,7 @@
 
 .section-peek__desc {
   color: #423d3d;
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(16px, 1.5vw, 20px);
   letter-spacing: -0.6px;
   line-height: 1.4;
@@ -414,7 +450,7 @@
 }
 
 b.section-peek__desc {
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   display: block;
   color: #262626;
   font-size: clamp(16px, 1.5vw, 20px);
@@ -424,7 +460,7 @@ b.section-peek__desc {
 
 .section-peek__scroll {
   color: #262626;
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(14px, 1.2vw, 16px);
   font-weight: 500;
   line-height: 1.4;

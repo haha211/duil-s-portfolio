@@ -1,0 +1,30 @@
+/* Shared local variable fonts. Keep Korean glyphs out of platform-dependent fallbacks. */
+@font-face {
+  font-family: 'Pretendard';
+  src: url('../font/Pretendard/PretendardVariable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Geist';
+  src: url('../font/Geist/GeistVariable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --font-body: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif;
+  --font-display: 'Geist', 'Pretendard', 'Apple SD Gothic Neo', system-ui, sans-serif;
+  --font-ui: var(--font-display);
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 650;
+  --text-heading: clamp(28px, 2.6vw, 40px);
+  --text-body: 18px;
+  --text-ui: 14px;
+  --text-caption: 13px;
+}

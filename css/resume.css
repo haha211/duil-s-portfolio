@@ -1,18 +1,10 @@
-@font-face {
-  font-family: Pretendard;
-  src: url('../font/Pretendard/PretendardVariable.woff2') format('woff2');
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: swap;
-}
-
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
   background: #fdfdfd;
   color: #111;
-  font-family: Pretendard, sans-serif;
+  font-family: var(--font-body);
   line-height: 1.55;
 }
 a { color: inherit; }

@@ -1,4 +1,6 @@
 /* === WORK: Reverse Peel === */
+// Must match the flow-layout conditions in work.css and responsive.css.
+const workFlowQuery = window.matchMedia('(max-width: 1080px), (max-height: 759px)');
 function bindWorkScroll(handler) {
   var lenis = window.__lenis;
   if (lenis && typeof lenis.on === 'function') lenis.on('scroll', handler);
@@ -10,7 +12,10 @@ function bindWorkScroll(handler) {
   var sections = Array.from(stack.querySelectorAll('.work-section'));
   var sticky = document.createElement('div');
   sticky.className = 'work-sticky';
-  sections.forEach(sec => sticky.appendChild(sec));
+  sections.forEach((sec, i) => {
+    sec.style.setProperty('--layer', i + 1);
+    sticky.appendChild(sec);
+  });
   stack.appendChild(sticky);
   stack.style.setProperty('--count', sections.length);
   var vh = () => window.innerHeight || 0;
@@ -20,22 +25,35 @@ function bindWorkScroll(handler) {
     var r = stack.getBoundingClientRect();
     target = Math.min(sections.length, Math.max(0, (-r.top) / vh()));
   }
+  var lastActiveIndex = null;
   function render() {
     current += (target - current) * ease;
-    var staticLayout = window.matchMedia('(max-width: 1080px)').matches;
-    sections.forEach((sec, i) => {
-      var reveal = 1;
-      if (!staticLayout && i > 0) {
-        var u = current - (i - 1);
-        var norm = (u - REVEAL_START) / REVEAL_RANGE;
-        reveal = Math.max(0, Math.min(1, norm));
-      }
-      sec.style.setProperty('--reveal', reveal);
-      var hidden = !staticLayout && reveal <= 0.001;
-      sec.style.pointerEvents = hidden ? 'none' : 'auto';
-      sec.setAttribute('aria-hidden', hidden ? 'true' : 'false');
-      sec.inert = hidden;
+    var staticLayout = workFlowQuery.matches;
+    var reveals = sections.map((sec, i) => {
+      if (staticLayout || i === 0) return 1;
+      var u = current - (i - 1);
+      return Math.max(0, Math.min(1, (u - REVEAL_START) / REVEAL_RANGE));
     });
+    // Only the dominant layer is interactive; covered layers must not receive Tab focus.
+    var activeIndex = staticLayout ? -1 : 0;
+    if (!staticLayout) reveals.forEach((reveal, i) => { if (reveal >= 0.5) activeIndex = i; });
+    var changed = activeIndex !== lastActiveIndex;
+    var focusedSection = changed ? document.activeElement.closest('.work-section') : null;
+    sections.forEach((sec, i) => {
+      var hidden = !staticLayout && i !== activeIndex;
+      sec.style.setProperty('--reveal', reveals[i]);
+      sec.style.pointerEvents = hidden ? 'none' : 'auto';
+      sec.inert = hidden;
+      sec.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+      sec.classList.toggle('is-current', !hidden);
+    });
+    if (changed) {
+      lastActiveIndex = activeIndex;
+      stack.dispatchEvent(new CustomEvent('work:activechange', { detail: { index: activeIndex } }));
+      if (activeIndex >= 0 && focusedSection && focusedSection !== sections[activeIndex]) {
+        sections[activeIndex].querySelector('.work-btn')?.focus({ preventScroll: true });
+      }
+    }
     window.__workProgress = current;
     requestAnimationFrame(render);
   }
@@ -89,6 +107,14 @@ function bindWorkScroll(handler) {
       }
     });
     io.observe(hero);
+  });
+  document.getElementById('work').addEventListener('work:activechange', () => {
+    heroes.forEach(hero => {
+      if (!hero.closest('.work-section').inert) return;
+      hero.querySelector('video').pause();
+      hero.classList.remove('is-open');
+      hero.setAttribute('aria-pressed', 'false');
+    });
   });
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
@@ -144,7 +170,7 @@ function bindWorkScroll(handler) {
   if (!peeks.length) return;
   const panels = new Map([...peeks].map(el => [el, el.querySelector('.section-peek__panel')]));
   const placePanels = () => {
-    const mobile = window.matchMedia('(max-width: 1080px)').matches;
+    const mobile = workFlowQuery.matches;
     peeks.forEach(el => {
       const panel = panels.get(el);
       if (!panel) return;
@@ -181,6 +207,16 @@ function bindWorkScroll(handler) {
   const closeAllExcept = keep => {
     peeks.forEach(p => { if (p !== keep) setOpen(p, false); });
   };
+  document.getElementById('work').addEventListener('work:activechange', event => {
+    const focusedPeek = [...peeks].find(item => panels.get(item)?.contains(document.activeElement));
+    closeAllExcept(null);
+    if (focusedPeek) {
+      const section = event.detail.index >= 0
+        ? document.querySelectorAll('#work .work-section')[event.detail.index]
+        : focusedPeek.closest('.work-section');
+      section?.querySelector('.work-btn')?.focus({ preventScroll: true });
+    }
+  });
   peeks.forEach(peek => {
     const tab = peek.querySelector('.section-peek__tab');
     const panel = panels.get(peek);
@@ -221,9 +257,65 @@ function bindWorkScroll(handler) {
   });
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      const peek = document.activeElement.closest?.('.section-peek');
+      const peek = [...peeks].find(item => panels.get(item)?.contains(document.activeElement))
+        || document.activeElement.closest?.('.section-peek');
       closeAllExcept(null);
-      if (peek) peek.querySelector('.section-peek__tab')?.focus();
+      if (peek) peek.closest('.work-section')?.querySelector('.work-btn')?.focus({ preventScroll: true });
     }
   });
+})();
+
+/* Project links account for the desktop stack and the mobile document flow. */
+(function () {
+  const work = document.getElementById('work');
+  if (!work) return;
+  const sections = [...work.querySelectorAll('.work-section')];
+  function goToProject(section, immediate = false) {
+    const index = sections.indexOf(section);
+    if (index < 0) return;
+    const stacked = !workFlowQuery.matches;
+    const intro = document.querySelector('.split-intro');
+    const pin = document.querySelector('.split-pin');
+    // Leaving the intro collapses its extra viewport. Target the final document position.
+    const foldingDistance = intro && pin
+      ? Math.max(0, intro.getBoundingClientRect().height - pin.getBoundingClientRect().height)
+      : 0;
+    const top = (stacked
+      ? work.getBoundingClientRect().top + window.scrollY + (index + 0.04) * window.innerHeight
+      : section.getBoundingClientRect().top + window.scrollY) - foldingDistance;
+    if (window.__lenis && typeof window.__lenis.scrollTo === 'function') {
+      window.__lenis.scrollTo(top, { immediate, force: true, duration: 0.9 });
+    } else {
+      window.scrollTo({ top, behavior: immediate ? 'instant' : 'smooth' });
+    }
+  }
+  window.__scrollToWork = goToProject;
+  document.querySelectorAll('[data-work-next]').forEach(button => {
+    button.addEventListener('click', () => {
+      const next = document.getElementById(button.dataset.workNext);
+      if (next) goToProject(next);
+    });
+  });
+  document.addEventListener('click', event => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const target = document.getElementById(link.getAttribute('href').slice(1));
+    const section = target === work || target?.id === 'andwise'
+      ? sections[0]
+      : target?.classList.contains('work-section') ? target : null;
+    if (!section) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    goToProject(section);
+    history.replaceState(null, '', link.getAttribute('href'));
+  }, true);
+  function routeHash() {
+    const target = document.getElementById(location.hash.slice(1));
+    const section = target === work || target?.id === 'andwise'
+      ? sections[0]
+      : target?.classList.contains('work-section') ? target : null;
+    if (section) goToProject(section);
+  }
+  window.addEventListener('load', () => setTimeout(routeHash, 80));
+  window.addEventListener('hashchange', routeHash);
 })();

@@ -57,55 +57,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* === Local Fonts === */
-@font-face {
-  font-family: 'HelveticaNeueLTPro';
-  src: url('../font/Helvetica_Neue/HelveticaNeueLTPro-Lt.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueLTPro';
-  src: url('../font/Helvetica_Neue/HelveticaNeueLTPro-Roman.otf') format('opentype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueLTPro';
-  src: url('../font/Helvetica_Neue/HelveticaNeueLTPro-It.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueLTPro';
-  src: url('../font/Helvetica_Neue/HelveticaNeueLTPro-Md.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'HelveticaNeueLTPro';
-  src: url('../font/Helvetica_Neue/HelveticaNeueLTPro-Hv.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Pretendard';
-  font-style: normal;
-  font-weight: 100 900;
-  src: url('../font/Pretendard/PretendardVariable.woff2') format('woff2-variations');
-  font-display: swap;
-}
-
 /* === Theme Vars === */
 :root {
   --bg: #fdfdfd;
@@ -129,7 +80,7 @@ html {
 }
 
 body {
-  font-family: 'HelveticaNeueLTPro', sans-serif;
+  font-family: var(--font-ui);
   background: var(--bg);
   color: var(--txt);
   overflow-x: hidden;

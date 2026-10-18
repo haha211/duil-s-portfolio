@@ -1,34 +1,100 @@
-/* Recent planning work uses the site's teal accent and readable, static cards. */
-.andwise-experience { position: relative; background: #edf3f3; color: #182c2d; padding: clamp(80px, 9vw, 144px) 24px; font-family: Pretendard, sans-serif; }
-.andwise-inner { max-width: 1240px; margin: auto; }
-.case-eyebrow { color: #176c70; font-size: 13px; font-weight: 750; letter-spacing: .1em; line-height: 1.6; }
-.andwise-header h2 { margin: 20px 0 24px; font-size: clamp(32px, 4.3vw, 58px); line-height: 1.25; letter-spacing: -.04em; word-break: keep-all; }
-.case-lead { max-width: 780px; font-size: clamp(17px, 1.7vw, 21px); line-height: 1.8; word-break: keep-all; }
-.case-meta { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; font-size: 15px; color: #3b5355; }
-.case-jumps { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 0; }
-.case-jumps a { border: 1px solid #91abad; border-radius: 100px; background: #fff; padding: 12px 20px; color: #15575b; font-size: 15px; font-weight: 650; }
-.case-jumps a:hover { background: #176c70; color: #fff; }
-.planning-case { margin-top: 80px; padding-top: 48px; border-top: 1px solid #b8cccc; scroll-margin-top: 120px; }
-.planning-case-header { margin-bottom: 30px; }
-.planning-case-header h3 { margin: 12px 0 16px; font-size: clamp(26px, 3vw, 40px); line-height: 1.35; letter-spacing: -.035em; word-break: keep-all; }
-.planning-case-header > p:last-child { font-size: 18px; line-height: 1.7; color: #3b5355; word-break: keep-all; }
-.planning-case-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-.case-copy, .case-media { display: grid; gap: 18px; min-width: 0; }
-.planning-card { padding: 26px 28px; border: 1px solid #b8cccc; border-radius: 18px; background: #fff; box-shadow: 0 4px 18px #183b3c08; }
-.planning-card h4 { margin-bottom: 14px; color: #176c70; font-size: 17px; font-weight: 750; }
-.planning-card p, .planning-card li { font-size: 18px; line-height: 1.8; word-break: keep-all; overflow-wrap: anywhere; }
-.planning-card ul { padding-left: 20px; list-style: disc; }
-.planning-card li + li { margin-top: 6px; }
-.placeholder-surface { display: flex; flex-direction: column; justify-content: center; gap: 12px; min-height: 156px; padding: 24px; border: 1px dashed #709b9d; border-radius: 18px; background: #f9fcfc; text-align: center; color: #41676a; }
-.placeholder-surface > span { font-size: 14px; line-height: 1.6; }
-.placeholder-surface > span:first-child { font-size: 11px; letter-spacing: .1em; }
-.placeholder-surface strong { font-size: 19px; line-height: 1.5; word-break: keep-all; }
-.case-placeholder figcaption { margin: 8px 4px 0; color: #4c6567; font-size: 13px; line-height: 1.7; }
-.case-placeholder--agent .placeholder-surface { min-height: 270px; }
-.automation-steps { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.automation-steps li { border: 1px solid #8fb5b6; border-radius: 14px; padding: 22px; background: #163d40; color: #fff; }
-.automation-steps span { display: block; color: #b4dddd; font-size: 14px; margin-bottom: 12px; }
-.automation-steps strong { font-size: 17px; line-height: 1.6; word-break: keep-all; }
+/* Recent work follows the same full-screen visual / summary / detail composition. */
+#work .work-section { z-index: calc(var(--layer, 1) * 10); }
+#work .work-anchor { position: absolute; top: 0; }
+#work .work-section--planning {
+  --planning-accent: #d7e5eb;
+  background: #111518;
+  font-family: var(--font-body);
+}
+.work-layout--planning {
+  grid-template-areas: 'visual intro' 'visual support';
+  grid-template-rows: auto auto;
+  row-gap: 24px;
+}
+.planning-backdrop { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.work-section--agent .planning-backdrop {
+  background: radial-gradient(ellipse at 29% 50%, #3a5b8270, transparent 56%), radial-gradient(ellipse at 83% 15%, #48526f40, transparent 45%), linear-gradient(120deg, #151e29, #101318 72%);
+}
+.planning-visual {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  grid-area: visual;
+  width: 100%;
+  min-width: 0;
+  margin: 0;
+  padding: clamp(24px, 2.2vw, 36px);
+  border: 1px solid #ffffff29;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff0a, #ffffff00 58%), #1a2022;
+  box-shadow: 0 28px 80px #0005, inset 0 1px 0 #ffffff09;
+}
+.visual-masthead { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 24px; }
+.visual-wordmark { font: 500 clamp(28px, 3vw, 44px)/1 var(--font-display); letter-spacing: -.04em; }
+.visual-wordmark > span { color: #b6cbd3; }
+.visual-masthead > span:last-child { font: 400 10px/1.5 var(--font-ui); letter-spacing: .12em; color: #b2bdc0; text-align: right; }
+.shot-crosshair { font: 300 26px/1 var(--font-ui); color: #c3d0d1; }
+#work .work-section--planning .work-info { gap: 13px; }
+.planning-info { grid-area: intro; align-self: end; }
+.planning-support { position: relative; z-index: 4; grid-area: support; align-self: start; min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+.planning-info .work-number { display: flex; gap: 16px; align-items: center; color: #dce5e9; font-family: var(--font-ui); font-size: 13px; }
+.planning-info .work-number span { font-size: 11px; letter-spacing: .1em; color: #b8c6cb; }
+.planning-period { margin-bottom: 7px; color: #b9c4c9; font-size: 12px; line-height: 1.6; }
+/* Use the shared project heading typography from work.css. */
+#work .planning-info .work-heading { width: auto; }
+#work .planning-info .work-heading .tchar { white-space: normal; }
+.planning-info .work-summary { font-size: clamp(16px, 1.25vw, 19px); line-height: 1.8; color: #e0e5e8; word-break: keep-all; margin: 5px 0 8px; max-width: 100%; }
+.planning-support .work-proof { gap: 9px; font-size: clamp(13px, 1vw, 15px); line-height: 1.65; color: #e2e8eb; }
+.planning-support .work-proof dt { color: #a7b9c1; }
+.planning-support .work-tags { gap: 8px 14px; margin: 6px 0; }
+.planning-support .work-tags li { color: #abbcc5; font-size: 11px; letter-spacing: .02em; }
+.planning-support .work-btn { font-family: var(--font-ui); display: inline-flex; gap: 24px; justify-content: space-between; border-radius: 4px; border-color: #ffffff65; padding: 14px 18px; font-size: 13px; transition: background .2s, color .2s; }
+.planning-next { position: absolute; right: 7%; bottom: 36px; display: flex; align-items: center; gap: 14px; z-index: 5; background: none; color: #c5d0d7; border: 0; cursor: pointer; font-size: 12px; }
+.planning-next > span:first-child { font: 400 9px/1 var(--font-ui); letter-spacing: .1em; color: #8fa1aa; }
+.planning-next > span:last-child { display: grid; place-items: center; width: 30px; height: 30px; border: 1px solid #ffffff33; border-radius: 50%; transition: transform .2s; }
+.planning-next:hover > span:last-child { transform: translateY(4px); }
+/* The Agent canvas pairs an editorial title, a numbered rail, and a reserved image. */
+.planning-visual--agent { background: radial-gradient(ellipse at 95% 10%, #7193be18, transparent 65%), #151c27; }
+.agent-visual-intro { font: 400 clamp(40px, 4.1vw, 60px)/.98 var(--font-display); letter-spacing: -.03em; color: #e4ebf6; }
+.agent-visual-intro em { color: #adc8ec; }
+.agent-visual-intro > span { display: block; margin-top: 16px; font: 400 12px/1.6 var(--font-body); color: #aebfd2; letter-spacing: -.01em; }
+.agent-pipeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 24px 0; }
+.agent-pipeline li { position: relative; display: flex; flex-direction: column; gap: 10px; }
+.agent-pipeline li::before { content: ''; position: absolute; top: 11px; left: 26px; right: 12px; height: 1px; background: #8ca6c344; }
+.agent-pipeline li:last-child::before { content: none; }
+.agent-pipeline li > span { display: grid; place-items: center; width: 23px; height: 23px; border: 1px solid #8da3be5e; border-radius: 50%; font: 400 9px/1 var(--font-ui); color: #bed2ef; }
+.agent-pipeline strong { font-size: 12px; font-weight: 400; color: #b8c7db; }
+.agent-shot { margin: 0; border: 1px solid #a1b9d342; border-radius: 5px; background: #b0c9e705; }
+.agent-shot-top { display: flex; justify-content: space-between; padding: 12px 15px; color: #9eb2ce; font: 400 9px/1 var(--font-ui); letter-spacing: .08em; border-bottom: 1px solid #a1b9d326; }
+.agent-shot-empty { height: clamp(180px, 25svh, 260px); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 13px; padding: 20px 12px; background: radial-gradient(ellipse at center, #aac6e709, transparent 70%); }
+.agent-shot-empty > strong { font-size: 17px; font-weight: 400; letter-spacing: -.02em; color: #d2deed; }
+.agent-shot-empty > span:last-child { font-size: 11px; line-height: 1.6; text-align: center; color: #9cafc8; }
+.agent-shot figcaption { padding: 0 15px 12px; font: 400 8px/1 var(--font-ui); letter-spacing: .1em; color: #94a6bf; }
+/* The university work is a supporting text summary within the Agent case. */
+.andwise-context { margin-top: 14px; padding-top: 18px; border-top: 1px solid #ffffff2b; }
+.andwise-context h3 { font-size: 13px; font-weight: 500; color: #d1dce4; line-height: 1.6; }
+.andwise-context p { margin-top: 9px; font-size: 13px; line-height: 1.8; color: #b7c4cf; word-break: keep-all; }
+.andwise-context ul { margin-top: 9px; display: grid; gap: 4px; font-size: 11px; line-height: 1.65; color: #9eafbe; word-break: keep-all; }
+.andwise-context li::before { content: '·'; margin-right: 6px; }
+/* Detail drawers use the same light surface as the other selected work. */
+.planning-detail { font-family: var(--font-body); padding: 30px 34px; }
+.detail-kicker { color: #62717c; font: 500 10px/1.5 var(--font-ui); letter-spacing: .1em; margin: 4px 0 18px; }
+.planning-detail .section-peek__title { line-height: 1.35; }
+.planning-detail .section-peek__meta { font-family: var(--font-ui); margin: 14px 0 28px; color: #64717a; font-size: 12px; line-height: 1.7; }
+.planning-detail .section-peek__desc { margin-bottom: 32px; font-size: 16px; line-height: 1.85; letter-spacing: -.02em; color: #3c454d; word-break: keep-all; }
+.planning-detail section { border-top: 1px solid #d9dfe3; padding: 23px 0; }
+.planning-detail h4 { font-size: 13px; color: #63717b; margin-bottom: 16px; font-weight: 500; }
+.planning-detail section p, .planning-detail section > ul:not(.detail-projects) { font-size: 15px; line-height: 1.9; color: #353f47; word-break: keep-all; }
+.planning-detail section > ul:not(.detail-projects) { list-style: disc; padding-left: 18px; }
+.planning-detail .detail-website-list { margin-top: 14px; }
+.planning-detail section > ul:not(.detail-projects) li + li { margin-top: 8px; }
+.detail-projects { display: grid; gap: 20px; }
+.detail-projects li { display: flex; gap: 16px; color: #273039; font-size: 16px; line-height: 1.5; }
+.detail-projects li > span { font: 400 11px/2 var(--font-ui); color: #788690; }
+.detail-projects small { display: block; margin-top: 4px; color: #64717b; font-size: 13px; line-height: 1.7; }
+.detail-media-note { margin-top: 10px; padding: 16px 18px; background: #eef1f3; color: #64717b; font-size: 12px; line-height: 1.8; }
+#work .work-section--planning :focus-visible { outline: 2px solid #c6dff3; outline-offset: 5px; }
+/* Readable body copy remains consistent with the dark About section. */
 .about-body__inner { line-height: 1.8; }
 .about-desc--center { max-width: 940px; margin-bottom: 160px; }
 .about-desc--center p { color: #d6dbe4; line-height: 1.9; font-weight: 400; word-break: keep-all; }
@@ -36,14 +102,72 @@
 .ri-detail { display: block; margin-top: 10px; font-size: 16px; font-weight: 400; line-height: 1.8; color: #bfcad4; word-break: keep-all; }
 .work-summary { line-height: 1.8; }
 .work-proof { line-height: 1.7; }
-.section-peek__desc, .section-peek__scroll { font-family: Pretendard, sans-serif; line-height: 1.85; word-break: keep-all; }
-@media (max-width: 800px) {
-  .planning-case-grid { grid-template-columns: 1fr; gap: 24px; }
-  .planning-case { margin-top: 56px; padding-top: 32px; }
-  .planning-card { padding: 22px; }
-  .planning-card p, .planning-card li { font-size: 17px; }
-  .case-jumps a { padding: 10px 16px; font-size: 14px; }
+.section-peek__desc, .section-peek__scroll { font-family: var(--font-body); line-height: 1.85; word-break: keep-all; }
+@media (max-width: 1400px) {
+  .skills { min-width: 0; justify-content: flex-start; overflow-x: auto; }
 }
-@media (max-width: 380px) {
-  .automation-steps { grid-template-columns: 1fr; }
+@media (min-width: 1081px) and (max-height: 820px) {
+  .planning-visual { padding: 24px; }
+  .visual-masthead { margin-bottom: 20px; }
+  .agent-visual-intro { font-size: 44px; }
+  .agent-pipeline { margin: 20px 0; }
+  #work .work-section--planning .work-info { gap: 10px; }
+  .planning-next { bottom: 20px; }
+  .andwise-context { margin-top: 8px; padding-top: 13px; }
+  .andwise-context p { font-size: 12px; line-height: 1.7; }
+}
+@media (max-width: 1080px) {
+  #work .work-section--planning { padding: 138px clamp(24px, 6vw, 72px) 80px; gap: 42px; min-height: auto; }
+  .work-layout--planning { max-width: 680px; gap: 32px; }
+  .planning-visual { width: min(100%, 680px); margin: 0; padding: 32px; text-align: left; }
+  .planning-info, .planning-support { align-self: center; }
+  .planning-support { width: min(100%, 680px); text-align: left; }
+  #work .work-section--planning .work-info { width: min(100%, 680px); padding: 0; margin: 0; text-align: left; align-items: flex-start; }
+  .planning-info .work-summary { max-width: 42ch; font-size: 18px; }
+  .planning-support .work-proof { font-size: 15px; }
+  .planning-support .work-tags { justify-content: flex-start; }
+  .planning-support .work-btn { align-self: flex-start; }
+  .planning-next { position: static; align-self: flex-end; margin-top: 0; margin-right: max(0px, calc((100% - 680px) / 2)); }
+  .agent-visual-intro { font-size: 56px; }
+  .agent-shot-empty { height: auto; min-height: 250px; }
+}
+@media (max-width: 600px) {
+  #work .work-section--planning { padding: 124px 22px 48px; gap: 30px; }
+  .work-layout--planning { gap: 30px; }
+  .planning-visual { padding: 22px; border-radius: 9px; }
+  .visual-masthead { margin-bottom: 24px; gap: 8px; }
+  .visual-wordmark { font-size: 30px; }
+  .visual-masthead > span:last-child { font-size: 8px; }
+  .planning-period { margin-bottom: 4px; font-size: 11px; }
+  .planning-info .work-number { font-size: 11px; }
+  .planning-info .work-number span { font-size: 9px; }
+  .planning-info .work-summary { font-size: 16px; margin-bottom: 6px; }
+  .planning-support .work-proof { font-size: 13px; gap: 8px; }
+  .planning-support .work-tags li { font-size: 10px; }
+  .planning-support .work-btn { font-size: 12px; padding: 13px 16px; }
+  .planning-next { font-size: 11px; gap: 10px; margin-top: 10px; }
+  .planning-next > span:first-child { font-size: 8px; }
+  .agent-visual-intro { font-size: 43px; }
+  .agent-visual-intro > span { font-size: 11px; }
+  .agent-pipeline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 16px; margin: 24px 0; }
+  .agent-pipeline li:nth-child(2n)::before { content: none; }
+  .agent-pipeline strong { font-size: 10px; }
+  .agent-shot-top { padding: 10px; font-size: 8px; }
+  .agent-shot-empty { min-height: 205px; gap: 13px; }
+  .agent-shot-empty > strong { font-size: 14px; }
+  .agent-shot-empty > span:last-child { font-size: 10px; max-width: 20ch; }
+  .agent-shot figcaption { padding-left: 10px; font-size: 7px; }
+  .planning-detail { padding: 22px; }
+  .andwise-context { margin-top: 14px; }
+  .andwise-context h3 { font-size: 13px; }
+  .andwise-context p { font-size: 13px; }
+  .andwise-context ul { font-size: 12px; gap: 5px; }
+}
+@media (max-width: 360px) {
+  .visual-masthead > span:last-child { display: none; }
+}
+@media (min-width: 1081px) and (max-height: 759px) {
+  .planning-next { position: static; justify-self: end; margin-top: 28px; }
+}
+@media (prefers-reduced-motion: reduce) {
 }

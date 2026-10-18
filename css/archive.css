@@ -30,8 +30,8 @@
 
 #archive .animated-tit {
   margin-left: 40px;
-  font-family: "Cormorant Garamond", serif;
-  font-style: italic;
+  font-family: var(--font-display);
+  font-style: normal;
   font-weight: bold;
   font-size: clamp(16px, 1.5vw, 20px);
   line-height: 1;
@@ -44,7 +44,7 @@
   position: relative;
   display: inline-block;
   margin: 0 0.3vw;
-  font-family: 'HelveticaNeueLTPro', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 400;
   letter-spacing: -0.015em;
   transition: opacity .5s ease, color .5s ease;
@@ -109,7 +109,7 @@
 }
 
 .strengths-title {
-  font-family: "Cormorant Garamond", serif;
+  font-family: var(--font-display);
   font-weight: 400;
   font-size: clamp(40px, 5vw, 64px);
   line-height: 1.12;
@@ -164,7 +164,7 @@
 }
 
 .strength-card figcaption {
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   margin-top: 8px;
   font-weight: 500;
   font-size: clamp(14px, 1.2vw, 16px);

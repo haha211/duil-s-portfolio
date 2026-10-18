@@ -1,33 +1,39 @@
-  <!-- WORK: 대표 프로젝트 4개 -->
-  <section id="work" class="work-stack" aria-label="Selected Works" style="--count: 4">
+  <!-- WORK: 최근 경력과 대표 프로젝트 5개 -->
+  <section id="work" class="work-stack" aria-label="Selected Works" style="--count: 5">
 
-    <!-- [01] Logiverse Website -->
-    <div class="work-section" data-layer="1">
+    <span id="andwise" class="work-anchor" aria-hidden="true"></span>
+    <!-- ANDWISE_PROJECTS -->
+
+    <!-- [02] Logiverse Website -->
+    <div class="work-section" data-layer="2" data-project="1" id="logiverse-project">
       <img src="img/work01.webp" alt="" class="work-hero__bg" loading="lazy" decoding="async">
 
-      <div class="work-hero" data-video="logiverse_intro.mp4" role="button" tabindex="0" aria-pressed="false" aria-label="로지벌스 프로젝트 영상 미리보기 재생">
-        <img src="img/work01.webp" alt="" class="work-hero__fg" loading="lazy" decoding="async">
-        <div class="work-hover" aria-hidden="true">
-          <video class="work-hover__video" preload="none" muted playsinline></video>
+      <div class="work-layout">
+        <div class="work-hero" data-video="logiverse_intro.mp4" role="button" tabindex="0" aria-pressed="false" aria-label="로지벌스 프로젝트 영상 미리보기 재생">
+          <img src="img/work01.webp" alt="" class="work-hero__fg" loading="lazy" decoding="async">
+          <div class="work-hover" aria-hidden="true">
+            <video class="work-hover__video" preload="none" muted playsinline></video>
+          </div>
         </div>
-      </div>
 
-      <div class="work-info">
-        <div class="work-number">[ 01 ]</div>
-        <h2 class="work-heading">회사·서비스 소개<br>웹사이트 설계</h2>
-        <p class="work-summary">회사와 서비스 소개부터 고객 문의까지 이어지는 웹 경험을 설계하고 직접 구현했습니다.</p>
-        <dl class="work-proof">
-          <div><dt>기획</dt><dd>소개 콘텐츠와 문의 기능 구성</dd></div>
-          <div><dt>구현</dt><dd>React 프론트엔드 단독 개발</dd></div>
-        </dl>
-        <a class="work-evidence" href="https://logiverse22.com" target="_blank" rel="noopener">결과물 링크 [↗]</a>
-        <ul class="work-tags">
-          <li>React</li>
-          <li>JSON</li>
-          <li>CSS</li>
-          <li>Front-end</li>
-        </ul>
-        <button type="button" class="work-btn" aria-controls="peek1" aria-expanded="false">프로젝트 상세 보기 [→]</button>
+        <div class="work-info">
+          <div class="work-number">[ 02 ]</div>
+          <h2 class="work-heading">회사·서비스 소개<br>웹사이트 설계</h2>
+          <p class="work-summary">회사와 서비스 소개부터 고객 문의까지 이어지는 웹 경험을 설계하고 직접 구현했습니다.</p>
+          <dl class="work-proof">
+            <div><dt>기획</dt><dd>소개 콘텐츠와 문의 기능 구성</dd></div>
+            <div><dt>구현</dt><dd>React 프론트엔드 단독 개발</dd></div>
+          </dl>
+          <a class="work-evidence" href="https://logiverse22.com" target="_blank" rel="noopener">결과물 링크 [↗]</a>
+          <ul class="work-tags">
+            <li>React</li>
+            <li>JSON</li>
+            <li>CSS</li>
+            <li>Front-end</li>
+          </ul>
+          <button type="button" class="work-btn" aria-controls="peek1" aria-expanded="false">프로젝트 상세 보기 [→]</button>
+        </div>
+
       </div>
 
       <div class="section-peek" data-state="closed" aria-expanded="false">
@@ -85,33 +91,36 @@
       </div>
     </div>
 
-    <!-- [02] BetWeen Universe UI/UX -->
-    <div class="work-section" data-layer="2">
+    <!-- [03] BetWeen Universe UI/UX -->
+    <div class="work-section" data-layer="3" data-project="2" id="between-project">
       <img src="img/work02.webp" alt="" class="work-hero__bg" loading="lazy" decoding="async">
 
-      <div class="work-hero" data-video="between_universe.mp4" role="button" tabindex="0" aria-pressed="false" aria-label="비트윈 유니버스 프로젝트 영상 미리보기 재생">
-        <img src="img/work02.webp" alt="" class="work-hero__fg" loading="lazy" decoding="async">
-        <div class="work-hover" aria-hidden="true">
-          <video class="work-hover__video" preload="none" muted playsinline></video>
+      <div class="work-layout">
+        <div class="work-hero" data-video="between_universe.mp4" role="button" tabindex="0" aria-pressed="false" aria-label="비트윈 유니버스 프로젝트 영상 미리보기 재생">
+          <img src="img/work02.webp" alt="" class="work-hero__fg" loading="lazy" decoding="async">
+          <div class="work-hover" aria-hidden="true">
+            <video class="work-hover__video" preload="none" muted playsinline></video>
+          </div>
         </div>
-      </div>
 
-      <div class="work-info">
-        <div class="work-number">[ 02 ]</div>
-        <h2 class="work-heading">건설기계 거래<br>앱 UI/UX 설계</h2>
-        <p class="work-summary">장비 매매·명판 스캔·AI 챗봇 기능을 앱 화면과 사용 흐름으로 구체화했습니다.</p>
-        <dl class="work-proof">
-          <div><dt>기획</dt><dd>핵심 기능의 화면 흐름 설계</dd></div>
-          <div><dt>제작</dt><dd>Figma UI·프로토타입 담당</dd></div>
-        </dl>
-        <a class="work-evidence" href="video/between_universe.mp4" target="_blank" rel="noopener">프로젝트 영상 [↗]</a>
-        <ul class="work-tags">
-          <li>Figma</li>
-          <li>Prototype</li>
-          <li>Photoshop</li>
-          <li>Sketch</li>
-        </ul>
-        <button type="button" class="work-btn" aria-controls="peek2" aria-expanded="false">프로젝트 상세 보기 [→]</button>
+        <div class="work-info">
+          <div class="work-number">[ 03 ]</div>
+          <h2 class="work-heading">건설기계 거래<br>앱 UI/UX 설계</h2>
+          <p class="work-summary">장비 매매·명판 스캔·AI 챗봇 기능을 앱 화면과 사용 흐름으로 구체화했습니다.</p>
+          <dl class="work-proof">
+            <div><dt>기획</dt><dd>핵심 기능의 화면 흐름 설계</dd></div>
+            <div><dt>제작</dt><dd>Figma UI·프로토타입 담당</dd></div>
+          </dl>
+          <a class="work-evidence" href="video/between_universe.mp4" target="_blank" rel="noopener">프로젝트 영상 [↗]</a>
+          <ul class="work-tags">
+            <li>Figma</li>
+            <li>Prototype</li>
+            <li>Photoshop</li>
+            <li>Sketch</li>
+          </ul>
+          <button type="button" class="work-btn" aria-controls="peek2" aria-expanded="false">프로젝트 상세 보기 [→]</button>
+        </div>
+
       </div>
 
       <div class="section-peek" data-state="closed" aria-expanded="false">
@@ -159,35 +168,38 @@
       </div>
     </div>
 
-    <!-- [03] LG DX SCHOOL -->
-    <div class="work-section" data-layer="3">
+    <!-- [04] LG DX SCHOOL -->
+    <div class="work-section" data-layer="4" data-project="3" id="lgdx-project">
       <img src="img/work03.webp" alt="" class="work-hero__bg" loading="lazy" decoding="async">
 
-      <div class="work-hero" data-video="lgdxschool.mp4" role="button" tabindex="0" aria-pressed="false" aria-label="LG DX SCHOOL 프로젝트 영상 미리보기 재생">
-        <img src="img/work03.webp" alt="" class="work-hero__fg" loading="lazy" decoding="async">
-        <div class="work-hover" aria-hidden="true">
-          <video class="work-hover__video" preload="none" muted playsinline></video>
+      <div class="work-layout">
+        <div class="work-hero" data-video="lgdxschool.mp4" role="button" tabindex="0" aria-pressed="false" aria-label="LG DX SCHOOL 프로젝트 영상 미리보기 재생">
+          <img src="img/work03.webp" alt="" class="work-hero__fg" loading="lazy" decoding="async">
+          <div class="work-hover" aria-hidden="true">
+            <video class="work-hover__video" preload="none" muted playsinline></video>
+          </div>
         </div>
-      </div>
 
-      <div class="work-info">
-        <div class="work-number">[ 03 ]</div>
-        <h2 class="work-heading">사용자 의견 기반<br>스마트홈 기획</h2>
-        <p class="work-summary">10만 건 이상 VOC 분석으로 반려견 분리불안 문제를 정의하고 IoT 연동 서비스를 기획·개발했습니다.</p>
-        <dl class="work-proof">
-          <div><dt>기획</dt><dd>데이터 분석 기반 문제 정의</dd></div>
-          <div><dt>구현</dt><dd>Flutter 앱·IoT 연동 개발</dd></div>
-          <div><dt>결과</dt><dd>DX 프로젝트 최우수상</dd></div>
-        </dl>
-        <a class="work-evidence" href="https://www.youtube.com/watch?v=1IiEZ6HVYBs&amp;list=PLyZe7OEhtfhpHmADhgERfuO4n0cJzp0hZ&amp;index=5" target="_blank" rel="noopener">프로젝트 발표 영상 [↗]</a>
-        <a class="work-evidence" href="https://www.figma.com/design/TJ1PYk25xvkmE8Gh16n5PC/%EA%B0%95%EB%91%90%EC%9D%BC_%EC%88%98%EC%83%81%EB%82%B4%EC%97%AD?node-id=0-1&amp;t=K2ObfmiC1MfEuUVk-1" target="_blank" rel="noopener noreferrer">최우수상 증빙 보기 [↗]</a>
-        <ul class="work-tags">
-          <li>TF-IDF</li>
-          <li>LDA/K-means</li>
-          <li>Flutter</li>
-          <li>XGBoost</li>
-        </ul>
-        <button type="button" class="work-btn" aria-controls="peek3" aria-expanded="false">프로젝트 상세 보기 [→]</button>
+        <div class="work-info">
+          <div class="work-number">[ 04 ]</div>
+          <h2 class="work-heading">사용자 의견 기반<br>스마트홈 기획</h2>
+          <p class="work-summary">10만 건 이상 VOC 분석으로 반려견 분리불안 문제를 정의하고 IoT 연동 서비스를 기획·개발했습니다.</p>
+          <dl class="work-proof">
+            <div><dt>기획</dt><dd>데이터 분석 기반 문제 정의</dd></div>
+            <div><dt>구현</dt><dd>Flutter 앱·IoT 연동 개발</dd></div>
+            <div><dt>결과</dt><dd>DX 프로젝트 최우수상</dd></div>
+          </dl>
+          <a class="work-evidence" href="https://www.youtube.com/watch?v=1IiEZ6HVYBs&amp;list=PLyZe7OEhtfhpHmADhgERfuO4n0cJzp0hZ&amp;index=5" target="_blank" rel="noopener">프로젝트 발표 영상 [↗]</a>
+          <a class="work-evidence" href="https://www.figma.com/design/TJ1PYk25xvkmE8Gh16n5PC/%EA%B0%95%EB%91%90%EC%9D%BC_%EC%88%98%EC%83%81%EB%82%B4%EC%97%AD?node-id=0-1&amp;t=K2ObfmiC1MfEuUVk-1" target="_blank" rel="noopener noreferrer">최우수상 증빙 보기 [↗]</a>
+          <ul class="work-tags">
+            <li>TF-IDF</li>
+            <li>LDA/K-means</li>
+            <li>Flutter</li>
+            <li>XGBoost</li>
+          </ul>
+          <button type="button" class="work-btn" aria-controls="peek3" aria-expanded="false">프로젝트 상세 보기 [→]</button>
+        </div>
+
       </div>
 
       <div class="section-peek" data-state="closed" aria-expanded="false">
@@ -246,34 +258,37 @@
       </div>
     </div>
 
-    <!-- [04] Hyundai Softeer -->
-    <div class="work-section" data-layer="4">
+    <!-- [05] Hyundai Softeer -->
+    <div class="work-section" data-layer="5" data-project="4" id="softeer-project">
       <img src="img/work04.webp" alt="" class="work-hero__bg" loading="lazy" decoding="async">
 
-      <div class="work-hero" data-video="hyundai_bootcamp.mp4" role="button" tabindex="0" aria-pressed="false" aria-label="현대 소프티어 프로젝트 영상 미리보기 재생">
-        <img src="img/work04.webp" alt="" class="work-hero__fg" loading="lazy" decoding="async">
-        <div class="work-hover" aria-hidden="true">
-          <video class="work-hover__video" preload="none" muted playsinline></video>
+      <div class="work-layout">
+        <div class="work-hero" data-video="hyundai_bootcamp.mp4" role="button" tabindex="0" aria-pressed="false" aria-label="현대 소프티어 프로젝트 영상 미리보기 재생">
+          <img src="img/work04.webp" alt="" class="work-hero__fg" loading="lazy" decoding="async">
+          <div class="work-hover" aria-hidden="true">
+            <video class="work-hover__video" preload="none" muted playsinline></video>
+          </div>
         </div>
-      </div>
 
-      <div class="work-info">
-        <div class="work-number">[ 04 ]</div>
-        <h2 class="work-heading">대기 분산·강좌 매칭<br>서비스 설계</h2>
-        <p class="work-summary">구내식당 대기와 시니어 강좌 탐색 문제를 조사하고, 서비스 구조와 화면·MVP를 설계했습니다.</p>
-        <dl class="work-proof">
-          <div><dt>리서치</dt><dd>설문·크롤링 기반 문제 분석</dd></div>
-          <div><dt>설계</dt><dd>IA·와이어프레임·서비스 로직</dd></div>
-          <div><dt>산출물</dt><dd>Zero Waiting·시니클 기획안</dd></div>
-        </dl>
-        <a class="work-evidence" href="https://www.figma.com/design/N8kdYXNCzU2J4UBpssreTR/%ED%98%84%EB%8C%80-%EC%86%8C%ED%94%84%ED%8B%B0%EC%96%B4-%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84?node-id=0-1&t=n7Y8jfNplGVNaXX4-1" target="_blank" rel="noopener">기획 결과물 링크 [↗]</a>
-        <ul class="work-tags">
-          <li>User Research</li>
-          <li>IA/Wireframe</li>
-          <li>MVP</li>
-          <li>Roadmap</li>
-        </ul>
-        <button type="button" class="work-btn" aria-controls="peek4" aria-expanded="false">프로젝트 상세 보기 [→]</button>
+        <div class="work-info">
+          <div class="work-number">[ 05 ]</div>
+          <h2 class="work-heading">대기 분산·강좌 매칭<br>서비스 설계</h2>
+          <p class="work-summary">구내식당 대기와 시니어 강좌 탐색 문제를 조사하고, 서비스 구조와 화면·MVP를 설계했습니다.</p>
+          <dl class="work-proof">
+            <div><dt>리서치</dt><dd>설문·크롤링 기반 문제 분석</dd></div>
+            <div><dt>설계</dt><dd>IA·와이어프레임·서비스 로직</dd></div>
+            <div><dt>산출물</dt><dd>Zero Waiting·시니클 기획안</dd></div>
+          </dl>
+          <a class="work-evidence" href="https://www.figma.com/design/N8kdYXNCzU2J4UBpssreTR/%ED%98%84%EB%8C%80-%EC%86%8C%ED%94%84%ED%8B%B0%EC%96%B4-%EB%B6%80%ED%8A%B8%EC%BA%A0%ED%94%84?node-id=0-1&t=n7Y8jfNplGVNaXX4-1" target="_blank" rel="noopener">기획 결과물 링크 [↗]</a>
+          <ul class="work-tags">
+            <li>User Research</li>
+            <li>IA/Wireframe</li>
+            <li>MVP</li>
+            <li>Roadmap</li>
+          </ul>
+          <button type="button" class="work-btn" aria-controls="peek4" aria-expanded="false">프로젝트 상세 보기 [→]</button>
+        </div>
+
       </div>
 
       <div class="section-peek" data-state="closed" aria-expanded="false">

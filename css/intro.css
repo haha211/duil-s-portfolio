@@ -64,7 +64,7 @@ body.split-done .split-intro {
 }
 
 .about-under__A {
-  font-family: 'Tangerine', cursive;
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(310px, calc(30vw + 100px), 600px);
   letter-spacing: -0.04em;
@@ -83,7 +83,7 @@ body.split-done .split-intro {
 }
 
 .about-under__rest {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: clamp(260px, calc(20vw + 100px), 500px);
   letter-spacing: -0.04em;
@@ -128,7 +128,7 @@ body.split-done .split-intro {
 }
 
 .venn-label {
-  font: 600 46px/1.1 "Cormorant Garamond", serif;
+  font: 600 46px/1.1 var(--font-display);
   letter-spacing: -0.02em;
   text-anchor: middle;
   dominant-baseline: middle;
@@ -147,7 +147,7 @@ body.split-done .split-intro {
   background: rgba(255, 255, 255, .90);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  font-family: 'Pretendard', sans-serif;
+  font-family: var(--font-body);
   transition: opacity .25s ease, visibility .25s ease;
 }
 
@@ -251,7 +251,7 @@ body.overlay-on .hero-message {
 
 .brand .logo-pre,
 .brand .logo-post {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 32px;
   letter-spacing: -0.03em;
@@ -259,7 +259,7 @@ body.overlay-on .hero-message {
 }
 
 .brand .logo-m {
-  font-family: 'Tangerine', cursive;
+  font-family: var(--font-display);
   font-weight: 800;
   font-size: 50px;
   letter-spacing: 0em;
@@ -290,14 +290,14 @@ body.overlay-on .hero-message {
 }
 
 .nav .idx {
-  font-family: 'HelveticaNeueLTPro', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 0em;
 }
 
 .nav .lbl {
-  font-family: 'HelveticaNeueLTPro', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 400;
   font-size: 16px;
   letter-spacing: 0.03em;
@@ -313,7 +313,7 @@ body.overlay-on .hero-message {
   width: min(380px, 30vw);
   text-align: left;
   letter-spacing: 0;
-  font-family: 'HelveticaNeueLTPro', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.35;
@@ -326,14 +326,14 @@ body.overlay-on .hero-message {
 }
 
 .profile-name .profile-A {
-  font-family: 'Tangerine', cursive;
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: 19px;
   letter-spacing: -0.01em;
 }
 
 .scroll-hint {
-  font-family: 'HelveticaNeueLTPro', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 300;
   position: absolute;
   left: 55px;
@@ -457,19 +457,19 @@ body.overlay-on .hero-message {
   border-color: #fff;
 }
 
-.thumb-item:nth-child(1) .thumb {
+.thumb-item[data-work="1"] .thumb {
   background-image: url('../img/fo01.png');
 }
 
-.thumb-item:nth-child(2) .thumb {
+.thumb-item[data-work="2"] .thumb {
   background-image: url('../img/fo02.png');
 }
 
-.thumb-item:nth-child(3) .thumb {
+.thumb-item[data-work="3"] .thumb {
   background-image: url('../img/fo03.png');
 }
 
-.thumb-item:nth-child(4) .thumb {
+.thumb-item[data-work="4"] .thumb {
   background-image: url('../img/fo04.png');
 }
 
@@ -494,7 +494,7 @@ body.overlay-on .hero-message {
 }
 
 .work-title .title {
-  font-family: 'Cormorant Garamond', sans-serif;
+  font-family: var(--font-display);
   font-weight: 500;
   font-size: clamp(24px, 2.6vw, 40px);
   line-height: 1.18;
@@ -602,7 +602,7 @@ body.at-about .ui-about {
   width: min(380px, 30vw);
   text-align: left;
   letter-spacing: 0;
-  font-family: 'HelveticaNeueLTPro', sans-serif;
+  font-family: var(--font-ui);
   font-weight: 400;
   font-size: 16px;
   line-height: 1.35;
@@ -613,7 +613,7 @@ body.at-about .ui-about {
 }
 
 .ui-about .profile-name .profile-A {
-  font-family: 'Tangerine', cursive;
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: 19px;
   letter-spacing: -0.01em;
@@ -762,3 +762,39 @@ body.at-about .wrap {
 }
 
 
+
+/* The newest case has a type-based cover while its real execution image is pending. */
+.thumb--agent {
+  display: flex;
+  align-items: flex-end;
+  padding: 13px;
+  background: radial-gradient(ellipse at top right, #4a6c9640, transparent 80%), #172232;
+  color: #deebff;
+  border-color: #60728b;
+}
+.thumb--agent > span { font-family: var(--font-display); font-size: 28px; font-weight: 600; line-height: .98; letter-spacing: -.055em; }
+.thumb--agent > i { position: absolute; top: 10px; right: 11px; font-size: 16px; line-height: 1; color: #adc8ec; }
+.work-layer--agent { background: radial-gradient(ellipse at 30% 50%, #3d5d8560, transparent 65%), #111923; }
+.hero-agent-card { position: absolute; left: clamp(210px, 23vw, 340px); top: 50%; transform: translateY(-50%); width: min(560px, 48vw); padding: 40px; border: 1px solid #9ebce035; border-radius: 12px; background: #162131; color: #e6eef9; }
+.hero-agent-card__label { font-family: var(--font-ui); font-size: 11px; font-weight: 500; letter-spacing: .08em; color: #aebed3; }
+.hero-agent-card__title { margin-top: 32px; font-family: var(--font-display); font-size: clamp(36px, 4vw, 58px); font-weight: 600; line-height: 1.03; letter-spacing: -.055em; }
+.hero-agent-card__title span { color: #adc8ec; }
+.hero-agent-card__summary { margin-top: 20px; font-family: var(--font-body); font-size: 15px; line-height: 1.7; color: #b6c7dd; }
+.hero-agent-card ol { display: grid; gap: 16px; margin-top: 36px; padding-top: 24px; border-top: 1px solid #a9bfdb33; }
+.hero-agent-card li { display: flex; gap: 20px; font-family: var(--font-body); font-size: 15px; font-weight: 400; line-height: 1.6; }
+.hero-agent-card li span { font-family: var(--font-ui); font-size: 11px; line-height: 2.2; color: #9fb5d1; }
+.work-title[data-work="agent"] { display: none; }
+@media (max-width: 1080px) {
+  .hero-agent-card { left: 10vw; width: 68vw; }
+}
+@media (max-width: 700px) {
+  .thumbs { scroll-snap-type: x proximity; }
+  .thumb-item { scroll-snap-align: start; }
+  .thumb--agent { padding: 8px; }
+  .thumb--agent > span { font-size: 22px; }
+  .thumb--agent > i { top: 6px; right: 6px; font-size: 12px; }
+  .hero-agent-card { left: 20px; width: calc(100vw - 40px); padding: 26px; }
+  .hero-agent-card__title { font-size: 38px; margin-top: 24px; }
+  .hero-agent-card__summary { font-size: 13px; }
+  .hero-agent-card ol { margin-top: 24px; gap: 10px; }
+}
